@@ -30,8 +30,8 @@ def find_network_of_hijacks(starting_pattern, permitted_throws, extra_passes=Non
     while keep_looping:
         newer_patterns = []
         for pattern in new_patterns:
-            hijack = programming.generate_hijacks(pattern, permitted_throws,extra_passes,response_pass)
-            hijack +=  programming.generate_hijacks(pattern[1:]+pattern[:1], permitted_throws,extra_passes,response_pass)
+            hijack = programming.generate_hijacks(pattern, permitted_throws, extra_passes, response_pass)
+            hijack +=  programming.generate_hijacks(pattern[1:] + pattern[:1], permitted_throws, extra_passes, response_pass)
             for transition in hijack:
 
                 if transition == None:
@@ -68,8 +68,7 @@ def find_network_of_hijacks(starting_pattern, permitted_throws, extra_passes=Non
                     if cell.value:
                         dims[cell.column] = max((dims.get(cell.column, 0), len(str(cell.value))))
             for col, value in dims.items():
-                pass
-                ws1.column_dimensions[get_column_letter(col)].width = value
+                ws1.column_dimensions[col].width = value
 
             for row in ws1.iter_rows():
                 for cell in row:
@@ -80,30 +79,31 @@ def find_network_of_hijacks(starting_pattern, permitted_throws, extra_passes=Non
                     if cell.value:
                         dims[cell.column] = max((dims.get(cell.column, 0), len(str(cell.value)[:str(cell.value).index('\n')])))
             for col, value in dims.items():
-                ws1.column_dimensions[get_column_letter(col)].width = value
+                ws1.column_dimensions[col].width = value
 
 
             adjacency_matrix_sheet = wb.create_sheet(title="Adjacency matrix")
             for i in range(2,len(patterns)+2):
                 for j in range(2,len(patterns)+2):
                     _ = adjacency_matrix_sheet.cell(column=i,row=j, value = '=IF(Transitions!{}="",0,1)'.format(get_column_letter(i)+str(j)))
-            # wb.save(filename = dest_filename)
+            wb.save(filename = dest_filename)
             #print("{} patterns written".format(transitions_found))
 
         else:
             print('No luck, Chuck.')
 
 
-    return wb
+    return transitions_found
+find_network_of_hijacks([9,9,6,8,9,2,6], [2,6,7,8,9], write_to_workbook=True, workbook_name='7clubwhynot.xlsx')
+
 
 import networkx as nx
 import matplotlib.pyplot as plt
-import numpy as np
 # For color mapping
 import matplotlib.colors as colors
 import matplotlib.cm as cmx
 import openpyxl
-from tempfile import NamedTemporaryFile
+import io
 
 
 def draw_network_of_hijacks(starting_pattern, permitted_throws, extra_passes=None, response_pass=None):
@@ -119,8 +119,8 @@ def draw_network_of_hijacks(starting_pattern, permitted_throws, extra_passes=Non
     while keep_looping:
         newer_patterns = []
         for pattern in new_patterns:
-            hijack = programming.generate_hijacks(pattern, permitted_throws,extra_passes,response_pass)
-            hijack +=  programming.generate_hijacks(pattern[1:]+pattern[:1], permitted_throws,extra_passes,response_pass)
+            hijack = programming.generate_hijacks(pattern, permitted_throws, extra_passes, response_pass)
+            hijack +=  programming.generate_hijacks(pattern[1:] + pattern[:1], permitted_throws, extra_passes, response_pass)
             for transition in hijack:
 
                 if transition == None:
@@ -165,12 +165,19 @@ def draw_network_of_hijacks(starting_pattern, permitted_throws, extra_passes=Non
     #plt.legend()
 
     f.tight_layout()
-    plt.savefig("whynot.png", format="PNG")
-    plt.close()
-    #plt.show()
-    wb = find_network_of_hijacks(starting_pattern, permitted_throws, write_to_workbook=True)
-    ws = wb.create_sheet("Network of patterns", 0)
-    img = openpyxl.drawing.image.Image('whynot.png')
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    buf.seek(0)
+    # im = Image.open(buf)
+    # im.show()
+
+
+
+    wb = Workbook()
+    ws = wb.worksheets[0]
+    ws.title = 'Network of patterns'
+    img = openpyxl.drawing.image.Image(buf)
+    buf.close()
     img.anchor = 'E2'
     img.width = img.height = 600
     ws.add_image(img)
@@ -189,5 +196,4 @@ def draw_network_of_hijacks(starting_pattern, permitted_throws, extra_passes=Non
     ws.column_dimensions['B'].width = nice_column_width
 
 
-    #wb.save('plzwork.xlsx')
     return wb

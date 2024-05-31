@@ -1,7 +1,6 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from openpyxl import Workbook
-from openpyxl.utils import get_column_letter
 from pandas import DataFrame
 import programming
 from complete_the_siteswap import complete, filter_rotations
@@ -28,8 +27,8 @@ def workbook_of_community(community_number, starting_pattern, permitted_throws, 
   while keep_looping:
       newer_patterns = []
       for pattern in new_patterns:
-          hijack = programming.generate_hijacks(pattern, permitted_throws,extra_passes,response_pass)
-          hijack +=  programming.generate_hijacks(pattern[1:]+pattern[:1], permitted_throws,extra_passes,response_pass)
+          hijack = programming.generate_hijacks(pattern, permitted_throws, extra_passes, response_pass)
+          hijack +=  programming.generate_hijacks(pattern[1:] + pattern[:1], permitted_throws, extra_passes, response_pass)
           for transition in hijack:
 
               if transition == None:

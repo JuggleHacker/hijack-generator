@@ -78,7 +78,7 @@ def do_not_throw_pass(raw_siteswap,index, permitted_throws):
             siteswap[time] = '?'
 
     permitted_self_throws = [throw for throw in permitted_throws if throw%2 == 0] # This is to rule out adding in extra passes over the transition
-    solutions = complete_the_siteswap.complete(siteswap,permitted_self_throws,number_of_objects)
+    solutions = complete_the_siteswap.complete(siteswap, permitted_self_throws, number_of_objects)
     raw_siteswap = raw_siteswap[index:]+raw_siteswap[:index]
     if solutions == []:
         pass
@@ -111,7 +111,7 @@ def throw_extra_pass(raw_siteswap,index, permitted_throws,extra_pass=None,respon
     siteswap[(extra_pass-2)%len(siteswap)] = response_pass
 
     permitted_self_throws = [throw for throw in permitted_throws if throw%2 == 0] # This is to rule out adding in extra passes over the transition
-    solutions = complete_the_siteswap.complete(siteswap,permitted_self_throws,number_of_objects)
+    solutions = complete_the_siteswap.complete(siteswap, permitted_self_throws, number_of_objects)
     raw_siteswap = raw_siteswap[index:]+raw_siteswap[:index]
     if solutions == []:
         pass

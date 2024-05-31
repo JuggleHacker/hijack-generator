@@ -1,7 +1,6 @@
-from flask import Flask, request, make_response, render_template, send_file
+from flask import Flask, request, make_response
 from tempfile import NamedTemporaryFile
 import transition_grid
-import gspread
 import transitions_to_gsheets_via_pandas
 from complete_the_siteswap import valid_so_far
 from local_siteswaps import is_valid_local
@@ -355,8 +354,7 @@ def hijack_generator_page():
         </html>
     '''.format(errors=errors)
 
-from flask import Flask, render_template
-import numpy
+from flask import render_template
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
