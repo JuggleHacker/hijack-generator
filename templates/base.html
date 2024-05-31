@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <title>{% block title %}{% endblock %} - Juggle Hacker</title>
+    <link rel="stylesheet" link href="/static/css/main.css">
+    <link rel="shortcut icon" href="/static/images/Juggle Hacker Favicon blue circle background.png">
+    {% block image %}{% endblock %}
+    <a href="/hijack-generator" class="center"><img src='/static/images/generator new menu icon.png' align="left" style="width:33%;height:10%;border:0;"></a>
+    <a href="/faqs" class="center"><img src='/static/images/faq test.png' align="left" style="width:33%;height:10%;border:0;"></a>
+    <a href="/video_gallery" class="center"><img src='/static/images/videos test.png' align="left" style="width:33%;height:10%;border:0;"></a>
+    <a href="/gallery" class="center"><img src='/static/images/gallery test.png' align="left" style="width:33%;height:10%;border:0;"></a>
+    <a href="/contact" class="center"><img src='/static/images/contact test.png' align="left" style="width:33%;height:10%;border:0;"></a>
+    <a href="/resources" class="center"><img src='/static/images/resources.png' align="left" style="width:33%;height:10%;border:0;"></a>
+    <br><br><br><br>
+    {% endblock %}
+</head>
+<body>
+    <br><br>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer" class="center">
+        {% block footer %}
+        <br>
+        Juggle Hacker - A website made by Cameron Ford.<br>
+        Hosted on <a href='https://www.pythonanywhere.com/'>pythonanywhere.com</a><br>
+        Powered by Python <ion-icon name="logo-python"></ion-icon><br>
+        {% endblock %}
+    </div>
+
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+</body>
+</html>

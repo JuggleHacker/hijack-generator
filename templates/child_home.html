@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" link href="/static/css/main.css">
+{% endblock %}
+{% block image %}
+<img src='/static/images/NOSPACEJUGGLEHACKER.png' class="center" style="width:820px;height:460px;border:0;">
+{% endblock %}
+{% block content %}
+    <br><br>
+    <h2 class="center" style="text-align:center;">Welcome to Juggle Hacker, a website which finds hijacks between four handed siteswaps.</h2>
+    <p class="center">
+        <b style="font-size:20px;">hijack</b><br>
+        <i>/ˈhʌɪdʒak/</i>
+    </p>
+    <p class="center" style="font-size:12px;">
+        <i style="font-size:14px;">verb</i><br>
+        When one club passer decides to change the pattern which is being juggled, forcing the other passer to change their pattern too.
+    <p class="center" style="font-size:12px;">
+        <i style="font-size:14px;">noun</i><br>
+        A certain type of transition between two different club passing patterns.
+    </p>
+    <p class="center">
+        For more details on four handed siteswaps and hijacks, see the <a href="/faqs">frequently asked questions.</a><br>
+    </p>
+    <p class="center">
+        To generate some hijacks, see the <a href="/hijack-generator">Hijack Generator.</a><br>
+    </p>
+{% endblock %}

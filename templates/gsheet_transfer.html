@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Secret{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" link href="/static/css/main.css">
+{% endblock %}
+{% block image %}
+<img src='/static/images/NOSPACEJUGGLEHACKER.png' class="center" style="width:820px;height:460px;border:0;">
+{% endblock %}
+{% block content %}
+    <br> <br>
+    {% if success %}
+        <h2 class="center" style="text-align:center;">A google sheet was created and shared with {{email}}!</h1>
+        <p class='center'>You should hopefully have a confirmation email that the google sheet has been shared.</p><br>
+        <p class='center'>Here is your network diagram, and key:</p><br>
+        <img class="center" src="data:image/png;base64,{{ image }}" width="500"><br>
+        <img class="center" src="data:image/png;base64,{{ legend }}" width="500">
+        <p class='center'>If you are wondering what these diagrams are, have a look at:</p>
+        <A href="#Question10" class='center'>How do I interpret the network diagram?</A><br>
+    {% else %}
+        <h2 class="center" style="text-align:center;">A google sheet could not be shared with {{email}}.<br>Is the email correct?<br>If so, your domain may not support sharing google sheets.</h1>
+{% endif %}
+{% endblock %}

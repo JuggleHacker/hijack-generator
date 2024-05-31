@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Generator{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" link href="/static/css/main.css">
+{% endblock %}
+{% block image %}
+<br>
+<img src='/static/images/Hijack Generator Graphic.png' class="center" style="width:820px;height:460px;border:0;">
+{% endblock %}
+{% block content %}
+    <br><br>
+    <body>
+                <h2 class="center"><center>Welcome to the Hijack Generator</center></h2>
+                <header>
+                    <span class="center">{{errors}}</span>
+                </header>
+
+                <p class="center">In order to generate hijacks some information is required:</p>
+                <p class="center">
+                    <img src='/static/images/New Favicon.png' align="left" style="width:13px;height:13px;border:0;">
+                    &nbsp;&nbsp;What pattern the two passers are currently juggling<br>
+                    <img src='/static/images/New Favicon.png' align="left" style="width:13px;height:13px;border:0;">
+                    &nbsp;&nbsp;What throws the two passers can do<br>
+                    <span style="font-size:small;">(For example, can they throw and catch double passes?)</span>
+                </p>
+
+                <p class="center">Please specify these by entering lists of whole numbers, separated by commas.</p>
+                <p class="center">For more details on what to put in the boxes, look at the <a href="/faqs#Question8" target="_blank">frequently asked questions.</a></p>
+                <form method="post" action="/hijack-generator">
+                    <p class="center"><b style="color:red">{{ starting_pattern_flag }}</b><b>Starting pattern:</b> <input name="starting_pattern" value= {{starting_pattern}} onfocus="if (this.value=='7,7,8,6,2') this.value='';"/> E.g. 7,7,8,6,2 for 6 club why not.</p>
+                    <p class="center"><b style="color:red">{{ permitted_throws_flag }}</b><b>Permitted throws:</b> <input name="permitted_throws" value={{permitted_throws}} /> E.g. 2,6,7,8 for patterns made up of zips, selfs, single passes and heffs. </p>
+                    <p class="center">You can have your output as a spreadsheet (.xlsx file) or as a google sheet. If you want a google sheet, you need to tell me your email.</p>
+                    <p class="center">If you are wondering how to read your output, have a look at the <a href="/faqs#Question9" target="_blank">frequently asked questions.</a></p>
+                    <p class="center"><input type="submit" value="Give me a spreadsheet of transitions" /></p>
+                    <p class="center"><b>Email:</b> <input name="email_address" value={{email_address}} onfocus="if (this.value=='optional') this.value='';"/> please leave this field alone if you don't want a google sheet!</p>
+                    <p class="center"><input type="submit" value="Send me a google sheet" /></p>
+                </form>
+
+            </body>
+{% endblock %}

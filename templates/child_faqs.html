@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% block title %}FAQs{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" link href="/static/css/main.css">
+{% endblock %}
+{% block image %}
+<img src='/static/images/NOSPACEJUGGLEHACKER.png' class="center" style="width:820px;height:460px;border:0;">
+{% endblock %}
+{% block content %}
+<div class="center">
+        <h1>Frequently asked questions</h1>
+        <img src='/static/images/FAQ Graphic.png' style="width:184px;height:170px;border:0;" align="right">
+        <A href="#Question1">What does this website actually do?</A><br>
+        <A href="#Question2">What is a four handed siteswap?</A><br>
+        <A href="#Question3">How do I read four handed siteswaps?</A><br>
+        <A href="#Question4">What is a global/local siteswap?</A><br>
+        <A href="#Question5">What is the point in using both global and local siteswaps and confusing everyone?</A><br>
+        <A href="#Question6">What is a hijack?</A><br>
+        <A href="#Question7">What do hijacks look like when they are juggled?</A><br>
+        <A href="#Question8">What do I put in the boxes of the hijack generator?</A><br>
+        <A href="#Question9">How do I read my output?</A><br>
+        <A href="#Question10">How do I interpret the network diagram?</A><br>
+        <A href="#Questiona">I've found some really cool patterns. Would you like to try them out with me?</A><br>
+        <A href="#Questionb">Who made the awesome graphics?</A><br>
+        <A href="#Questionc">I found a mistake on your website!</A><br>
+        <A href="#Questiond">I have a question that hasn't been answered!</A><br>
+        </div>
+        <h2 class="center" id="Question1">What does this website actually do?</h2>
+        <p class="center">This website finds a specific type of transition between passing patterns (four handed siteswaps). The type of transition is known as a hijack.</p>
+        <h2 class="center" id="Question2">What is a four handed siteswap?</h2>
+        <p class="center">A four handed siteswap is a juggling pattern for two people. It can contain a mixture of selves and passes of different heights (single spins, double spins etc.)</p>
+        <p class="center">Four handed siteswaps are written as a string of numbers. For example, 77862 is a common four handed siteswap know as "why not".</p>
+        <p class="center">The video below is an episode of Jugglevision, which includes a tutorial on four handed siteswaps by Brook Roberts. The next question also explains how to read them.</p>
+        <iframe class="center" width="789" height="444" src="https://www.youtube.com/embed/PvDDS1u1thE?start=1836" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h2 class="center" id="Question3">How do I read four handed siteswaps?<br id="Question4"> What is a global/local siteswap?</h2>
+        <p class="center">Let's say Andy (A) and Becky (B) are trying to juggle 77862</p>
+        <p class="center">First, they need to know what the numbers mean:</p>
+        <table class="center" style="border:1px solid black;border-collapse:collapse;">
+          <tr>
+            <th style="border:1px solid black;">Number  </th>
+            <th style="border:1px solid black;">Description</th>
+            <th style="border:1px solid black;">Notes   </th>
+          </tr>
+          <tr>
+            <td style="border:1px solid black;">2</td>
+            <td style="border:1px solid black;">Transfer a club from one of your hands to the other</td>
+            <td style="border:1px solid black;">Known as a "zip". If you know solo siteswap, it's like a 1.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid black;">6</td>
+            <td style="border:1px solid black;">Throw a club from one of your hands to the other, so that it spins once.</td>
+            <td style="border:1px solid black;">Known as a "self". It is like doing one throw of a 3 club cascade.</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid black;">7</td>
+            <td style="border:1px solid black;">Throw a club to the other person, so that it spins once.</td>
+            <td style="border:1px solid black;">
+                <p>Known as a "pass" or a "single"<br>IMPORTANT: This will be a straight pass for juggler A, and a crossing for juggler B.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="border:1px solid black;">8</td>
+            <td style="border:1px solid black;">Throw a club straight up, so that it spins twice, and lands in the hand which threw it.</td>
+            <td style="border:1px solid black;">
+                <p>Known as a "heff". It is like one throw of a 4 club fountain, on doubles.</p>
+            </td>
+          </tr>
+        </table>
+        <p class="center">Note: These are the most common throws, and the four we need for 77862, but Brook's video above gives a few others</p>
+        <p class="center">The next thing A and B need to know is that this is a global siteswap. That means their instructions are all jumbled up! Let's go through the throws one by one:</p>
+        <p class="center" style="color:red;">7 &nbsp;&nbsp; A throws a pass</p>
+        <p class="center" style="color:blue;">7 &nbsp;&nbsp; B throws a pass</p>
+        <p class="center" style="color:red;">8 &nbsp;&nbsp; A throws a heff</p>
+        <p class="center" style="color:blue;">6 &nbsp;&nbsp; B throws a self</p>
+        <p class="center" style="color:red;">2 &nbsp;&nbsp; A does a zip</p>
+        <p class="center">What happens next? We've run out of numbers!<br>Just start again, but this time it's B's turn to throw first</p>
+        <p class="center" style="color:blue;">7 &nbsp;&nbsp; B throws a pass</p>
+        <p class="center" style="color:red;">7 &nbsp;&nbsp; A throws a pass</p>
+        <p class="center" style="color:blue;">8 &nbsp;&nbsp; B throws a heff</p>
+        <p class="center" style="color:red;">6 &nbsp;&nbsp; A throws a self</p>
+        <p class="center" style="color:blue;">2 &nbsp;&nbsp; B does a zip</p>
+        <p class="center">If we kept going, we would write 77862 again, and it would be A's turn to throw first.<br>But that means we're back at the start! So overall:</p>
+        <p class="center" style="color:red;">A throws a pass, a heff, a zip, a pass and a self and then repeats from the beginning</p>
+        <p class="center" style="color:blue;">B throws a pass, a self, a pass, a heff and a zip and then repeats from the beginning</p>
+        <p class="center">Note: A and B are doing the same sequence of throws, just starting at different points.</p>
+        <p class="center">It can be confusing having the instructions all jumbled up in a global siteswap, so some people prefer local siteswaps, which give instructions for one juggler</p>
+         <p class="center" style="color:red;">A's local siteswap is 78276 (pass heff zip pass self)</p>
+        <p class="center" style="color:blue;">B's local siteswap is 76782 (pass self pass heff zip)</p>
+        <p class="center">
+            So, to summarise:<br>
+            Global siteswaps give the instructions for both jugglers. <br>
+            The first number is juggler A's first throw. <br>
+            The second number is juggler B's first throw.<br>
+            The third number is juggler A's second throw.<br>
+            The fourth number is juggler B's second throw.<br>
+            And so on...<br>
+            Local siteswaps give the instructions for one juggler. <br>
+            For example, if we have the local siteswap for juggler A: <br>
+            The first number is juggler A's first throw.<br>
+            The second number is juggler A's second throw.<br>
+            And so on...<br>
+        </p>
+
+        <h2 class="center" id="Question5">What is the point in using both global and local siteswaps and confusing everyone?</h2>
+        <p class="center">
+            Global siteswaps are useful for finding new patterns, and figuring out the start for a pattern you want to juggle.<sup>[citation needed]</sup><br>
+            Local siteswaps are useful if you want to tell the person you're passing with what to do.</p>
+
+        <h2 class="center" id="Question6">What is a hijack?</h2>
+        <p class="center">
+            According to Ed Clark, in his <a href="https://passing.zone/hijacking-in-period-3-5-and-7/">article on hijacks:</a><br><br>
+            <q>
+                In passing, hijacking is where one passer decides to change what pattern they are passing and their actions transitions their partner into a compatible pattern. One passer is making an active choice, the other is passively responding.
+            </q><br><br>
+            I have written up my thoughts about what counts as a hijack and how I developed the hijack generator in <a href="static/pdfs/What is hijacking.pdf" target="_blank">the following article</a>
+        </p>
+        <h2 class="center" id="Question7">What do hijacks look like when they are juggled?</h2>
+        <p class="center">
+            You can see some examples of hijacks being juggled in the <a href="/video_gallery">video gallery.</a>
+        </p>
+
+        <h2 class="center" id="Question8">What do I put in the boxes of the hijack generator?</h2>
+        <p class="center">
+            You need to specify a starting pattern, by giving the global siteswap.<br>
+            It needs to be given as a list of whole numbers, with commas in between.<br>
+            For example 7,7,8,6,2 is fine.<br>
+            But 7,6,7,8,2 isn't (it is not a valid <b>global</b> siteswap, it is a local siteswap)<br>
+            7, 7, 8, 6, 2 also won't work (there are spaces between the numbers)<br><br>
+            You also need to specify what throws are allowed.<br>
+            For example, if you only want patterns with single passes, selfs, heffs and zips in, you should enter 2,6,7,8<br>
+            If you also wanted double passes, you should enter 2,6,7,8,9
+
+        </p>
+
+        <h2 class="center" id="Question9">How do I read my output?</h2>
+        <p class="center">
+            In the "Transitions" tab of your spreadsheet or google sheet, you'll have something like this:
+            <img src='/static/images/sample_output.png' class="center" style="width:551px;height:115px;border:0;"><br>
+            Here's how to make sense of it:<br>
+            The first column tells you what pattern you are currently juggling.<br>
+            The first row tells you what pattern you will be juggling after the transition.<br>
+            So cell C2 (second row, third column) tells you how to hijack from the pattern shown in cell A2 to the pattern show in cell C1.<br>
+            The patterns are shown as both a global siteswap and the two local siteswaps.
+            For example, in cell A2, the global siteswap is [7,8,6,7,2,7,7,8,6,2].
+            The two local siteswaps are given below the global. They are [7,6,2,7,6] and [8,7,7,8,2].<br>
+            The hijacks are shown for both the active and the passive juggler.<br>
+            For example, in cell C2 "Active [7,6,2,7,6][6,6,8,7,6]" means that the active juggler will be throwing pass, self, zip, pass self.
+            Then, instead of throwing pass, self, zip, pass, self again, they throw self, self, heff, pass, self. This causes the passive juggler to transition.
+            This should happen naturally, but the passive transition is also written out "Passive [8,7,7,8,2][8,7,2,8,2]". We can see the passive juggler has been throwing
+            heff, pass, pass, heff, zip. They, when they don't receive a pass, they throw heff, pass, zip, heff, zip instead.
+        </p>
+        <h2 class="center" id="Question10">How do I interpret the network diagram?</h2>
+        <p class="center">
+            If you requested a google sheet, and it was successfully transferred to you, you will be looking at something like the diagrams below.
+            If you requested a spreadsheet, you should have the diagram in the first tab.
+            <img src='/static/images/example_network.jpg' class="center" style="width:50%;height:50%;border:0;"><br>
+            <img src='/static/images/example_network_key.jpg' class="center" style="width:50%;height:50%;border:0;"><br>
+            In addition to looking cool, these diagrams also allow you to visualise which patterns you can transition between.<br>
+            The coloured dots represent patterns, and if there is a line between two dots, that means you can hijack between them.<br>
+            I mainly use them to try and find loops of patterns.<br>
+            For example, in the diagram above, you can see pattern 3 is linked to pattern 5 (because there is a line between them).<br>
+            Pattern 5 is then linked to pattern 4, pattern 4 is linked to pattern 7 and pattern 7 is linked back to pattern 3 (which was our start point!).<br>
+            So we can do four hijacks, and end up back where we started! There are many other loops in this pattern, I’m sure you can spot a few yourself.<br>
+            Sticking with our loop of 3 -> 5 -> 4 -> 7 -> 3, it would be nice to know what these patterns actually were (!).<br>
+            That’s where the key below helps. It explains what pattern each dot represents.<br>
+            It gives the local siteswaps. For example dot 3 is [8,8,7,6,6] vs [7,6,2,8,2].<br>
+            If these numbers don’t make sense to you, have a look at <A href="#Question3">How do I read four handed siteswaps?</A><br>
+            So we can see one juggler is doing heff, heff, pass, self, self and the other is doing pass, self, zip, heff, zip.<br>
+            This is popcorn vs 5 club why not.<br>
+            Similarly, dot 5 is pass, heff, pass, zip, self vs heff, zip, pass, self, pass. This is 6 club not why vs 6 club why not.<br>
+            In summary, this diagram allows us to quickly see which patterns are linked to each other. This allows us to spot loops.<br>
+            If we want the details of how to do the transitions (or the global siteswap so we can figure out how to start) then we need to look at the ‘Transitions’ tab of the spreadsheet/google sheet.
+
+        </p>
+
+        <h2 class="center" id="Questiona">I've found some really cool patterns. Would you like to try them out with me?</h2>
+        <p class="center">Yes!</p>
+        <h2 class="center" id="Questionb">Who made the awesome graphics?</h2>
+        <p class="center">Lisa did, she's the best!</p>
+        <h2 class="center" id="Questionc">I found a mistake on your website!</h2>
+        <p class="center">Why not <a href="/contact">contact me</a> and let me know what you've found.<br>
+        <h2 class="center" id="Questiond">I have a question that hasn't been answered!</h2>
+        <p class="center">Why not <a href="/contact">contact me</a> and let me know your question.<br>
+{% endblock %}

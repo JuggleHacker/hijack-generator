@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" link href="/static/css/main.css">
+{% endblock %}
+{% block image %}
+<img src='/static/images/NOSPACEJUGGLEHACKER.png' class="center" style="width:820px;height:460px;border:0;">
+{% endblock %}
+{% block content %}
+    <br> <br>
+    <form method="post" action="/contact">
+        <p class="center"><b>Name:</b> <input name="name" value="anonymous" />Tell me your name, if you want to.</p>
+        <p class="center"><b>Email:</b> <input name="email" value="optional"/> Tell me your email, if you want a response.</p>
+        <p class="center"><b>Comment/Question:</b><br><br>
+        <textarea style="width:100%;" placeholder="Enter your message" required="required" rows="8" name="comment"></textarea></br>
+        <p class="center"><input type="submit" value="Send comment" /></p>
+    </form>
+{% endblock %}
